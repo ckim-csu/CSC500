@@ -1,0 +1,1 @@
+Repository for storing all scripts for CSC500
