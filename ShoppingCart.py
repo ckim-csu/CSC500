@@ -42,9 +42,7 @@ class ShoppingCart:
     def modify_item(self, item):
         for x in self.cart_items:
             if x.item_name == str(item) and x.item_price != 0.0 and x.item_quantity != 0:
-                x.item_price = float(input("Enter the item price: "))
                 x.item_quantity = int(input("Enter the item quantity: "))
-                x.item_description = input("Enter the item description: ")
             else:
                 print("Item not found in cart. Nothing modified.")
 
@@ -100,11 +98,13 @@ def print_menu(ShoppingCart):
             ShoppingCart.add_item()
             return print_menu(ShoppingCart)
         elif option == "r":
-            removed_item = input("What item are you removing? ")
+            print("REMOVE ITEM FROM CART")
+            removed_item = input("Enter name of item to remove: ")
             ShoppingCart.remove_item(removed_item)
             return print_menu(ShoppingCart)
         elif option == "c":
-            modified_item = input("What item are you modifying? ")
+            print("CHANGE ITEM QUANTITY")
+            modified_item = input("Enter the item name: ")
             ShoppingCart.modify_item(modified_item)
             return print_menu(ShoppingCart)
         elif option == "i":
@@ -114,7 +114,13 @@ def print_menu(ShoppingCart):
             ShoppingCart.print_total()
             return print_menu(ShoppingCart)
     
-JohnDoeCart = ShoppingCart("John Doe", "February 1, 2020")
-print_menu(JohnDoeCart)
+
+name = str(input("Enter customer's name: "))
+date = str(input("Enter today's date: "))
+print("Customer name:", name)
+print("Today's date:", date)
+
+MyCart = ShoppingCart(name, date)
+print_menu(MyCart)
 
 
